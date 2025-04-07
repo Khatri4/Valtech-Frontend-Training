@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Holi Greeting</title>
+</head>
+<body onload="drawCard()">
+  <canvas id="canvas" width="500" height="500"></canvas>
+
+  <script>
+    function drawCard() {
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+
+      ctx.fillStyle = "lightblue";
+      ctx.fillRect(0, 0, 400, 300);
+
+      ctx.fillStyle="orange";
+      ctx.fillRect(90,90,90,90)
+
+      ctx.fillStyle="red";
+      ctx.fillRect(120,70,90,90)
+
+      ctx.fillStyle="blue";
+      ctx.fillRect(150,60,90,90)
+
+      ctx.fillStyle="grey";
+      ctx.fillRect(100,180,90,90)
+
+      ctx.fillStyle="lightred";
+      ctx.fillRect(200,200,90,90)
+
+      ctx.fillStyle="lightpink";
+      ctx.fillRect(300,90,90,90)
+
+      ctx.fillStyle="pink";
+      ctx.fillRect(250,150,90,90)
+
+      ctx.fillStyle = "black";
+      ctx.font = "30px Arial";
+      ctx.fillText("Happy Holi!", 110, 100);
+
+      ctx.fillStyle = "black";
+      ctx.font = "16px Arial";
+      ctx.fillText("Wishing you joy, color, and happiness!", 60, 160);
+
+      const colors = ["red", "blue", "green", "orange", "magenta", "cyan"];
+      const positions = [
+        [50, 50], [340, 60], [80, 220], [200, 240], [300, 180], [150, 50]
+      ];
+
+      for (let i = 0; i < colors.length; i++) {
+        ctx.beginPath();
+        ctx.arc(positions[i][0], positions[i][1], 15, 0, Math.PI * 2);
+        ctx.fillStyle = colors[i];
+        ctx.fill();
+      }
+    }
+  </script>
+</body>
+</html>
