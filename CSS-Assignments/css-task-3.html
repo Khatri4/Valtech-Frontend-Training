@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid</title>
+    <style>
+      #styleFile::before{
+        
+        content: "";
+        display: inline-block;
+        width: 66px;
+        height: 80px;
+        background-image: url('images/file-icons.png');
+        background-repeat: no-repeat;
+        background-position: -750px -20px;
+        border:3px dashed brown;
+        
+      
+      }
+      #resumeFile::before{
+       
+        content: "";
+        display: inline-block;
+        width: 66px;
+        height: 80px;
+        background-image: url('images/file-icons.png');
+        background-repeat: no-repeat;
+        background-position: -30px -20px;
+        border:3px dashed brown;
+      
+      }
+      #passportFile::before{
+       
+       content: "";
+       display: inline-block;
+       width: 66px;
+       height: 80px;
+       background-image: url('images/file-icons.png');
+       background-repeat: no-repeat;
+       background-position: -30px -20px;
+       border:3px dashed brown;
+     
+     }
+     #photoFile::before{
+       
+       content: "";
+       display: inline-block;
+       width: 66px;
+       height: 80px;
+       background-image: url('images/file-icons.png');
+       background-repeat: no-repeat;
+       background-position: -1110px -20px;
+       border:3px dashed brown;
+     
+     }
+     #bankFile::before{
+       
+       content: "";
+       display: inline-block;
+       width: 66px;
+       height: 80px;
+       background-image: url('images/file-icons.png');
+       background-repeat: no-repeat;
+       background-position: -30px -20px;
+       border:3px dashed brown;
+       
+     
+     }
+     #reqletterFile::before{
+       
+       content: "";
+       display: inline-block;
+       width: 66px;
+       height: 80px;
+       background-image: url('images/file-icons.png');
+       background-repeat: no-repeat;
+       background-position: -570px -200px;
+       border:3px dashed brown;
+       
+     
+     }
+     #reportsFile::before{
+       
+       content: "";
+       display: inline-block;
+       width: 66px;
+       height: 80px;
+       background-image: url('images/file-icons.png');
+       background-repeat: no-repeat;
+       background-position: -1110px -200px;
+       border:3px dashed brown;
+     
+     }
+     #backupFile::before{
+       
+       content: "";
+       display: inline-block;
+       width: 66px;
+       height: 80px;
+       background-image: url('images/file-icons.png');
+       background-repeat: no-repeat;
+       background-position: -1110px -200px;
+       border:3px dashed brown;
+     
+     }
+     #libraryFile::before{
+       
+       content: "";
+       display: inline-block;
+       width: 70px;
+       height: 90px;
+       background-image: url('images/file-icons.png');
+       background-repeat: no-repeat;
+       background-position: -1110px -200px;
+       border:3px dashed brown;
+     
+     }
+      /* article{
+        border: 5px solid black;
+     } */
+      article{
+        align-content: center;
+     }
+     div{
+      position: relative;
+      margin: 20px;
+      background-color: silver;
+      justify-content: space-between;
+      /* border:2px solid black; */
+     } 
+     a{
+      position: absolute;
+      font-size: 20px;
+     } 
+
+     .icon{
+        
+        margin: 20px;
+        padding: 5px;
+        background-color: white;
+        width: 100px;
+     }
+     a{ 
+        margin-bottom: 40px;
+     }
+    
+
+
+        main{
+        
+        width:950px;
+        height: 700px;
+        display: grid;
+        grid-template-columns: 25% 25% 25%;
+        grid-template-rows: 25% 25% 25%;
+        justify-content: center;
+        align-items: center;
+        margin-block-start: 90px;
+        margin-inline-start: 300px;
+        margin: 140px;;
+    }
+    .one{
+        grid-column: 1/2;
+    }
+    .two{
+        grid-column: 2/3;
+    }
+    .three{
+        grid-column: 3/4;
+    }
+    .four{
+        grid-column: 1/2;
+    }
+    .five{
+        grid-column: 2/3;
+    }
+    .six{
+        grid-column: 3/4;
+    }
+    .seven{
+        grid-column: 1/2;
+    }
+    .eight{
+        grid-column: 2/3;
+    }
+    .nine{
+        grid-column: 3/4;
+    }
+
+     
+      
+    </style>
+  </head>
+  <body>
+    <main>
+
+    <article class="box one">
+      <div title="css" class="icon" id="styleFile">
+        <a href="downloads/appstyle.css">Download Style File</a>
+      </div>
+    </article>
+
+    <article class="box two">
+      <div title="pdf" class="icon" id="resumeFile">
+        <a href="downloads/mystyle.css">Download Resume</a>
+      </div>
+    </article>
+
+    <article class="box three">
+      <div title="pdf" class="icon" id="passportFile">
+        <a href="downloads/mystyle.css">Download Passport</a>
+      </div>
+    </article>
+
+    <article class="box four">
+      <div title="jpg" class="icon" id="photoFile">
+        <a href="downloads/mystyle.css">Download Photo</a>
+      </div>
+    </article>
+
+    <article class="box five">
+      <div title="pdf" class="icon" id="bankFile">
+        <a href="downloads/mystyle.css">Download Bank Statement</a>
+      </div>
+    </article>
+
+    <article class="box six">
+      <div title="word" class="icon" id="reqletterFile">
+        <a href="downloads/mystyle.css">Download Request Letter Format</a>
+      </div>
+    </article>
+
+    <article class="box seven">
+      <div title="zip" class="icon" id="reportsFile">
+        <a href="downloads/mystyle.css">Download All Past Reports</a>
+      </div>
+    </article>
+
+    <article class="box eight">
+      <div title="xml" class="icon" id="backupFile">
+        <a href="downloads/mystyle.css">Download Backup</a>
+      </div>
+    </article>
+
+    <article class="box nine">
+      <div title="js" class="icon" id="libraryFile">
+        <a href="downloads/lib.js">Download Library</a>
+      </div>
+    </article>
+</main>
+  </body>
+</html>

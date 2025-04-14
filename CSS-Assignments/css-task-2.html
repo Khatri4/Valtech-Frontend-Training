@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex</title>
+    <style>
+      #styleFile::before{
+        
+        content: "";
+        display: inline-block;
+        width: 66px;
+        height: 80px;
+        background-image: url('images/file-icons.png');
+        background-repeat: no-repeat;
+        background-position: -750px -20px;
+        
+      
+      }
+      #resumeFile::before{
+       
+        content: "";
+        display: inline-block;
+        width: 66px;
+        height: 80px;
+        background-image: url('images/file-icons.png');
+        background-repeat: no-repeat;
+        background-position: -30px -20px;
+      
+      }
+      #passportFile::before{
+       
+       content: "";
+       display: inline-block;
+       width: 66px;
+       height: 80px;
+       background-image: url('images/file-icons.png');
+       background-repeat: no-repeat;
+       background-position: -30px -20px
+     
+     }
+     #photoFile::before{
+       
+       content: "";
+       display: inline-block;
+       width: 66px;
+       height: 80px;
+       background-image: url('images/file-icons.png');
+       background-repeat: no-repeat;
+       background-position: -1110px -20px
+     
+     }
+     #bankFile::before{
+       
+       content: "";
+       display: inline-block;
+       width: 66px;
+       height: 80px;
+       background-image: url('images/file-icons.png');
+       background-repeat: no-repeat;
+       background-position: -30px -20px
+       
+     
+     }
+     #reqletterFile::before{
+       
+       content: "";
+       display: inline-block;
+       width: 66px;
+       height: 80px;
+       background-image: url('images/file-icons.png');
+       background-repeat: no-repeat;
+       background-position: -570px -200px
+       
+     
+     }
+     #reportsFile::before{
+       
+       content: "";
+       display: inline-block;
+       width: 66px;
+       height: 80px;
+       background-image: url('images/file-icons.png');
+       background-repeat: no-repeat;
+       background-position: -1110px -200px
+     
+     }
+     #backupFile::before{
+       
+       content: "";
+       display: inline-block;
+       width: 66px;
+       height: 80px;
+       background-image: url('images/file-icons.png');
+       background-repeat: no-repeat;
+       background-position: -1110px -200px
+     
+     }
+     #libraryFile::before{
+       
+       content: "";
+       display: inline-block;
+       width: 70px;
+       height: 90px;
+       background-image: url('images/file-icons.png');
+       background-repeat: no-repeat;
+       background-position: -1110px -200px;
+    
+     
+     }
+     main{
+        /* margins-left: 100px ; */
+        width:950px;
+        height: 700px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(255, 255, 255);
+        margin-block-start: 90px;
+        margin-inline-start: 300px;
+     }
+     .icon{
+        
+        margin: 20px;
+        border: 5px dotted rgb(186, 132, 132);
+        padding: 5px;
+        background-color: white;
+ 
+     }
+     a{
+        
+        margin-bottom: 40px;
+        font-family: cursive;
+     }
+      
+    </style>
+  </head>
+  <body>
+    <main>
+    <div class = "row">
+    <article >
+      <div title="css" class="icon" id="styleFile">
+        <a href="downloads/appstyle.css">Download Style File</a>
+      </div>
+    </article>
+    <article>
+      <div title="pdf" class="icon" id="resumeFile">
+        <a href="downloads/mystyle.css">Download Resume</a>
+      </div>
+    </article>
+    <article>
+      <div title="pdf" class="icon" id="passportFile">
+        <a href="downloads/mystyle.css">Download Passport</a>
+      </div>
+    </article>
+    </div>
+    <div class="row">
+    <article>
+      <div title="jpg" class="icon" id="photoFile">
+        <a href="downloads/mystyle.css">Download Photo</a>
+      </div>
+    </article>
+    <article>
+      <div title="pdf" class="icon" id="bankFile">
+        <a href="downloads/mystyle.css">Download Bank Statement</a>
+      </div>
+    </article>
+    <article>
+      <div title="word" class="icon" id="reqletterFile">
+        <a href="downloads/mystyle.css">Download Request Letter Format</a>
+      </div>
+    </article>
+    </div>
+    <div class="row">
+    <article>
+      <div title="zip" class="icon" id="reportsFile">
+        <a href="downloads/mystyle.css">Download All Past Reports</a>
+      </div>
+    </article>
+    <article>
+      <div title="xml" class="icon" id="backupFile">
+        <a href="downloads/mystyle.css">Download Backup</a>
+      </div>
+    </article>
+    <article>
+      <div title="js" class="icon" id="libraryFile">
+        <a href="downloads/lib.js">Download Library</a>
+      </div>
+    </article>
+    </div>
+</main>
+  </body>
+</html>
