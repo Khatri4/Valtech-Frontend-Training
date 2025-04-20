@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vehicle Task Manager</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f9f9f9;
+    }
+  
+    h1, h2 {
+      color: #333;
+    }
+  
+    form.formdetails {
+      background: #fff;
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+  
+    form label {
+      font-weight: bold;
+    }
+  
+    form input[type="text"],
+    form input[type="date"] {
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  
+    form button {
+      padding: 7px 15px;
+      border: none;
+      border-radius: 4px;
+      background-color: #1976d2;
+      color: white;
+      cursor: pointer;
+    }
+  
+    form button:hover {
+      background-color: #125ea7;
+    }
+  
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #fff;
+      box-shadow: 0 0 5px rgba(0,0,0,0.05);
+    }
+  
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+  
+    th {
+      background-color: #eeeeee;
+    }
+  
+    tr:nth-child(even) {
+      background-color: #fafafa;
+    }
+  
+    .completed td:not(:last-child) {
+      text-decoration: line-through;
+      color: gray;
+    }
+  
+    td button {
+      padding: 5px 10px;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      cursor: pointer;
+    }
+  
+    td button:hover {
+      opacity: 0.9;
+    }
+  
+    button[onclick^="markComplete"] {
+      background-color: #4caf50;
+    }
+  
+    button[onclick^="editTask"] {
+      background-color: #2196f3;
+    }
+  
+    button[onclick^="deleteTask"] {
+      background-color: #f44336;
+    }
+  
+    /* Filter section styling */
+    label input[type="radio"] {
+      margin-right: 5px;
+    }
+  
+    h2 + label {
+      margin-right: 10px;
+      font-weight: bold;
+    }
+  
+    @media (max-width: 768px) {
+      form.formdetails {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+  
+      form input,
+      form button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Vehicle's TODO </h1>
+  <form class="formdetails">
+    <label>Vehicle Name: </label>
+    <input type="text" id="vname" required>
+    <label>Model: </label>
+    <input type="text" id="model" required>
+    <label>Task: </label>
+    <input type="text" id="taskInfo" required>
+    <label>Due Date: </label>
+    <input type="date" id="dueDate" required>
+    <button type="submit">Submit</button>
+  </form>
+
+  <h2>Filter</h2>
+  <label><input type="radio" name="filter" value="all" checked> All</label>
+<label><input type="radio" name="filter" value="completed"> Completed</label>
+<label><input type="radio" name="filter" value="pending"> Pending</label>
+
+  <h2>Tasks:</h2>
+  <table id="taskData">
+    <thead>
+      <tr>
+        <th>Vehicle Name</th>
+        <th>Model</th>
+        <th>Task</th>
+        <th>Due Date</th>
+        <th>Buttons</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    const vname = document.getElementById("vname");
+    const model = document.getElementById("model");
+    const taskInfo = document.getElementById("taskInfo");
+    const dueDate = document.getElementById("dueDate");
+    const vform = document.querySelector(".formdetails");
+    const taskData = document.querySelector("#taskData tbody");
+
+    let task = JSON.parse(localStorage.getItem('task')) || [];
+
+    function saveTask() {
+      localStorage.setItem('task', JSON.stringify(task));
+    }
+
+    function showTasks(filter = "all") {
+    taskData.innerHTML = "";
+
+    task.forEach((t, index) => {
+        // Apply filter
+        if (
+        (filter === "completed" && t.status !== "completed") ||
+        (filter === "pending" && t.status === "completed")
+        ) {
+        return; // Skip this task
+        }
+
+        const row = document.createElement("tr");
+
+        if (t.status === "completed") {
+        row.classList.add("completed");
+        }
+
+        row.innerHTML = `
+        <td>${t.vehicleName}</td>
+        <td>${t.vehicleModel}</td>
+        <td>${t.taskDetail}</td>
+        <td>${t.dueDate}</td>
+        <td>
+            <button onclick="markComplete(${index})">Complete</button>
+            <button onclick="editTask(${index})">Edit</button>
+            <button onclick="deleteTask(${index})">Delete</button>
+        </td>
+        `;
+
+        taskData.appendChild(row);
+    });
+    }
+
+
+    vform.onsubmit = function(e) {
+      e.preventDefault();
+
+      const newTask = {
+        vehicleName: vname.value,
+        vehicleModel: model.value,
+        taskDetail: taskInfo.value,
+        dueDate: dueDate.value,
+        status: 'pending'
+      };
+
+      task.push(newTask);
+      saveTask();
+      showTasks();
+      vform.reset();
+    };
+
+    function deleteTask(index) {
+        task.splice(index, 1);
+        saveTask();
+        showTasks();
+    }
+
+    function editTask(index) {
+      const t = task[index];
+      vname.value = t.vehicleName;
+      model.value = t.vehicleModel;
+      taskInfo.value = t.taskDetail;
+      dueDate.value = t.dueDate;
+
+      task.splice(index, 1); // Remove for updating on submit
+      saveTask();
+      showTasks();
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function markComplete(index) {
+      task[index].status = "completed";
+      saveTask();
+      showTasks();
+    }
+
+    // Initial load
+    showTasks();
+
+    // Filter radio buttons
+    document.querySelectorAll('input[name="filter"]').forEach(radio => {
+    radio.addEventListener("change", function() {
+        showTasks(this.value.toLowerCase());
+    });
+    });
+
+  </script>
+</body>
+</html>

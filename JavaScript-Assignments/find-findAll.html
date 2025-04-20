@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        mark{
+            display: inline-block;
+            background-color: pink;
+        }
+        span{
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function isHere(event){
+            var text = document.getElementsByTagName("p")[0].textContent;
+            var word = document.getElementsByTagName("input")[0].value
+            var output
+            var isAvailable = text.includes(word)
+            console.log(word)
+
+            if(isAvailable){
+                if(event.target.textContent === "Find"){
+                    output = text.replace(word,"<mark>"+word+"</mark>");
+                }
+                else if(event.target.textContent === "Find All"){
+                    output = text.replaceAll(word,"<mark>"+word+"</mark>");
+                }
+                document.getElementsByTagName("p")[0].innerHTML = output;
+               
+            }
+            else{
+                document.getElementsByTagName("p")[1].innerHTML = "<span>No matches found for your search</span>";
+                }
+        }
+    </script>
+  </head>
+  <body>
+    <p>
+      Let's be honest, my greatest super-powers are wit and charm. But if you
+      want a more literal interpretation of my superhuman abilities, I have a
+      healing factor, which allows me to recover from grave injuries by
+      regenerating entire body parts. I'm also an expert marksman and
+      hand-to-hand combatant. It's true—I'm basically a ninja. And I speak a
+      bunch of languages, like Japanese, German, and Spanish, but most of the
+      time I pretend I don't. Danke schön. Oh! And I have the ability to harness
+      continuity errors and break the fourth wall. Pretty cool, I know.
+    </p>
+    <label for=""> Find words: </label><input type="text" id="word">
+    <button onclick="isHere(event)">Find</button>
+    <button onclick="isHere(event)">Find All</button>
+    <p></p>
+  </body>
+</html>
