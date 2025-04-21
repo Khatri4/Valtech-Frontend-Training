@@ -8,7 +8,7 @@
     body {
       font-family: Arial, sans-serif;
       margin: 20px;
-      background-color: #f9f9f9;
+      background-color: #f3f3f3;
     }
   
     h1, h2 {
@@ -16,10 +16,10 @@
     }
   
     form.formdetails {
-      background: #fff;
+      background: white;
       padding: 15px 20px;
       border-radius: 8px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      box-shadow: 0 0 8px black;
       margin-bottom: 20px;
       display: flex;
       flex-wrap: wrap;
@@ -34,7 +34,7 @@
     form input[type="text"],
     form input[type="date"] {
       padding: 6px;
-      border: 1px solid #ccc;
+      border: 1px solid #cdcdcd;
       border-radius: 4px;
     }
   
@@ -42,34 +42,34 @@
       padding: 7px 15px;
       border: none;
       border-radius: 4px;
-      background-color: #1976d2;
+      background-color: blue;
       color: white;
       cursor: pointer;
     }
   
     form button:hover {
-      background-color: #125ea7;
+      background-color: #4f677d;
     }
   
     table {
       width: 100%;
       border-collapse: collapse;
-      background-color: #fff;
-      box-shadow: 0 0 5px rgba(0,0,0,0.05);
+      background-color: white;
+      box-shadow: 0 0 5px black;
     }
   
     th, td {
-      border: 1px solid #ddd;
+      border: 1px solid white;
       padding: 10px;
       text-align: left;
     }
   
     th {
-      background-color: #eeeeee;
+      background-color: white;
     }
   
     tr:nth-child(even) {
-      background-color: #fafafa;
+      background-color: white;
     }
   
     .completed td:not(:last-child) {
@@ -90,18 +90,17 @@
     }
   
     button[onclick^="markComplete"] {
-      background-color: #4caf50;
+      background-color: green;
     }
   
     button[onclick^="editTask"] {
-      background-color: #2196f3;
+      background-color: peru;
     }
   
     button[onclick^="deleteTask"] {
-      background-color: #f44336;
+      background-color: red;
     }
   
-    /* Filter section styling */
     label input[type="radio"] {
       margin-right: 5px;
     }
@@ -175,12 +174,11 @@
     taskData.innerHTML = "";
 
     task.forEach((t, index) => {
-        // Apply filter
         if (
         (filter === "completed" && t.status !== "completed") ||
         (filter === "pending" && t.status === "completed")
         ) {
-        return; // Skip this task
+        return;
         }
 
         const row = document.createElement("tr");
@@ -236,7 +234,7 @@
       taskInfo.value = t.taskDetail;
       dueDate.value = t.dueDate;
 
-      task.splice(index, 1); // Remove for updating on submit
+      task.splice(index, 1); 
       saveTask();
       showTasks();
 
@@ -249,10 +247,8 @@
       showTasks();
     }
 
-    // Initial load
     showTasks();
 
-    // Filter radio buttons
     document.querySelectorAll('input[name="filter"]').forEach(radio => {
     radio.addEventListener("change", function() {
         showTasks(this.value.toLowerCase());
